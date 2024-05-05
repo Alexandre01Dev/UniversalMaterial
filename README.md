@@ -7,30 +7,32 @@ To use this library, you need to add it as a dependency in your maven or gradle 
 To use the library, when you want to use a Material. You can call UMaterial class and you can find the Material you want to use. 
 
 ```java
-UMaterial.DIAMOND_SWORD;
+UMaterial.GREEN_WOOL;
 ```
 You can convert a Material to UMaterial by using the method `UMaterial.MYMATERIAL.toMaterial()`. 
 
 ```java
-Material material = UMaterial.DIAMOND_SWORD.toMaterial();
+Material material = UMaterial.GREEN_WOOL.toMaterial();
 ```
 
 You can convert to an ItemStack by using the method `UMaterial.MYMATERIAL.toItemStack()`. 
 
 ```java
-ItemStack itemStack = UMaterial.DIAMOND_SWORD.toItemStack();
+ItemStack itemStack = UMaterial.GREEN_WOOL.toItemStack();
 ```
 
-You can also check if a Material is equal to a UMaterial by using the method `UMaterial.MYMATERIAL.isMaterial(Material material) or UMaterial.isEquivalent(Material material, UMaterial uMaterial)`. 
+You can also check if a Material is equal to a UMaterial by using the method `UMaterial.MYMATERIAL.isMaterial(Material material) or UMaterial.isEquivalent(Material material, UMaterial uMaterial)`.
 
 ```java
+import be.alexandre01.universal.material.UMaterial;
+
 @EventHandler
 public void onPlayerInteract(PlayerInteractEvent event) {
-    if (UMaterial.DIAMOND_SWORD.isMaterial(event.getItem().getType())) {
+    if (UMaterial.GREEN_WOOL.isMaterial(event.getItem().getType())) {
         // Do something
     }
     // or
-    if (UMaterial.isEquivalent(event.getItem().getType(), UMaterial.DIAMOND_SWORD)) {
+    if ( UMaterial.isEquivalent(event.getItem().getType(), UMaterial.ORANGE_BANNER)){
         // Do something
     }
 }
