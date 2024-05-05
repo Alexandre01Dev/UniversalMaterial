@@ -12,7 +12,7 @@ UMaterial.GREEN_WOOL;
 You can convert a Material to UMaterial by using the method `UMaterial.MYMATERIAL.toMaterial()`. 
 
 ```java
-Material material = UMaterial.GREEN_WOOL.toMaterial();
+Material material = UMaterial.SUNFLOWER.toMaterial();
 ```
 
 You can convert to an ItemStack by using the method `UMaterial.MYMATERIAL.toItemStack()`. 
@@ -28,7 +28,7 @@ import be.alexandre01.universal.material.UMaterial;
 
 @EventHandler
 public void onPlayerInteract(PlayerInteractEvent event) {
-    if (UMaterial.GREEN_WOOL.isMaterial(event.getItem().getType())) {
+    if (UMaterial.RED_STAINED_GLASS_PANE.isMaterial(event.getItem().getType())) {
         // Do something
     }
     // or
