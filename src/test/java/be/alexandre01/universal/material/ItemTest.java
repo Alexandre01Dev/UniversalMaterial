@@ -1,3 +1,5 @@
+package be.alexandre01.universal.material;
+
 public class ItemTest {
     private final String name;
     private final String enumName;

@@ -1,3 +1,5 @@
+package be.alexandre01.universal.material;
+
 import be.alexandre01.universal.material.UMaterial;
 import net.minecraft.server.v1_8_R3.*;
 import org.bukkit.Material;

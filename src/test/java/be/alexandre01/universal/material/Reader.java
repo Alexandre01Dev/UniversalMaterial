@@ -1,4 +1,4 @@
-import net.minecraft.server.v1_8_R3.Items;
+package be.alexandre01.universal.material;
 
 import java.io.*;
 import java.nio.file.Files;
