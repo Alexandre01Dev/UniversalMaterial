@@ -92,10 +92,10 @@ public abstract class AbstractUItemData {
         }
     }
 
-    interface ItemDataToMat {
+    public interface ItemDataToMat {
         Material toMaterial(AbstractUItemData itemData);
     }
-    interface ItemDataToItemStack {
+    public interface ItemDataToItemStack {
         ItemStack toItemStack();
         ItemStack toItemStack(int amount);
     }
