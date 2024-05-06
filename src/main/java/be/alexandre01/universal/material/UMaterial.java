@@ -629,7 +629,7 @@ public class UMaterial  {
 
     static {
         try {
-            Field field = Material.class.getDeclaredField("MATERIAL_BY_NAME");
+            Field field = Material.class.getDeclaredField("BY_NAME");
             field.setAccessible(true);
             Map<String, Material> byName = (Map<String, Material>) field.get(null);
 
