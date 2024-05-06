@@ -2,7 +2,7 @@
 UniversalMaterial is a library that provide classes to work with Bukkit Materials and Minecraft versions. It's a simple library that can be used to make your plugin compatible with multiple versions of Minecraft.
 
 ## How to use
-To use this library, you need to add it as a dependency in your maven or gradle project. 
+To use this library, you need to add it as a dependency in your maven or gradle project.
 
 To use the library, when you want to use a Material. You can call UMaterial class and you can find the Material you want to use. 
 
