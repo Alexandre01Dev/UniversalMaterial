@@ -14,6 +14,7 @@ To use this library, you need to add it as a dependency in your maven or gradle 
         <url>https://jitpack.io</url>
     </repository>
 </repositories>
+
 <dependency>
     <groupId>com.github.Alexandre01Dev</groupId>
     <artifactId>UniversalMaterial</artifactId>
