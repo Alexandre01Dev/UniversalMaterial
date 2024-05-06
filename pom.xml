@@ -14,6 +14,9 @@
         <url>https://maven.pkg.github.com/Alexandre01Dev/UniversalMaterial</url>
       </repository>
     </distributionManagement>
+    <build>
+        <finalName>universal_material.jar</finalName>
+    </build>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
