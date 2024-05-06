@@ -15,7 +15,7 @@
       </repository>
     </distributionManagement>
     <build>
-        <finalName>universal_material.jar</finalName>
+        <finalName>universal_material</finalName>
     </build>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -23,19 +23,18 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <repositories>
-        <repository>
-            <id>papermc-repo</id>
-            <url>https://repo.papermc.io/repository/maven-public/</url>
-        </repository>
-        <repository>
-            <id>sonatype</id>
-            <url>https://oss.sonatype.org/content/groups/public/</url>
-        </repository>
+    <repository>
+        <id>papermc-repo</id>
+        <url>https://repo.papermc.io/repository/maven-public/</url>
+    </repository>
+    <repository>
+        <id>sonatype</id>
+        <url>https://oss.sonatype.org/content/groups/public/</url>
+    </repository>
 </repositories>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.spigotmc/spigot -->
-
 
         <dependency>
             <groupId>com.destroystokyo.paper</groupId>

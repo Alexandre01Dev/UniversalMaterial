@@ -18,25 +18,30 @@ public abstract class AbstractUItemData {
 
     protected final Material material;
 
-    @Setter(AccessLevel.PACKAGE) @Getter(AccessLevel.PACKAGE) private byte legacyData;
-    @Getter(AccessLevel.PACKAGE) private final String legacyNameID;
-    @Getter(AccessLevel.PACKAGE) private final String modernNameID;
+    @Setter(AccessLevel.PACKAGE) @Getter private byte legacyDataShort;
+    @Getter private final String legacyNameID;
+    @Getter private final String modernNameID;
+
+
 
 
     public AbstractUItemData(AbstractUItemData replacement, String nameID) {
         this.modernNameID = nameID;
-        this.legacyData = replacement.getLegacyData();
+        this.legacyDataShort = replacement.getLegacyDataShort();
+
+
         this.material = UMaterial.matchMaterial(replacement.getLegacyNameID(), nameID);
         this.legacyNameID = replacement.getLegacyNameID();
 
         itemDataMap.put(nameID, this);
     }
 
+
     public AbstractUItemData(String legacyName, String nameID) {
         this.material = UMaterial.matchMaterial(nameID, legacyName);
         this.modernNameID = nameID;
         this.legacyNameID = legacyName;
-        this.legacyData = (byte) 0;
+        this.legacyDataShort = (byte) 0;
 
         itemDataMap.put(nameID, this);
     }
@@ -44,26 +49,32 @@ public abstract class AbstractUItemData {
     public AbstractUItemData(LegacyCompactedData legacyCompactedData, String nameID) {
         this.material = UMaterial.matchMaterial(nameID, legacyCompactedData.getName());
         this.modernNameID = nameID;
-        this.legacyData = legacyCompactedData.getData();
+        this.legacyDataShort = legacyCompactedData.getData();
         this.legacyNameID = legacyCompactedData.getName();
 
         itemDataMap.put(nameID, this);
     }
     protected ItemStack toItemStack() {
+        System.out.println(material);
+        System.out.println(NMSVersionUtil.getType());
         if(NMSVersionUtil.isLegacy())
-            return toLegacyItemStack(1,legacyData);
-        return new ItemStack(material,legacyData);
+            return toLegacyItemStack(1, legacyDataShort);
+        return new ItemStack(material,1);
     }
 
 
+    public String getCurrentNameID() {
+        return NMSVersionUtil.isLegacy() ? legacyNameID : modernNameID;
+    }
     protected ItemStack toItemStack(int amount) {
         if(NMSVersionUtil.isLegacy())
-            return toLegacyItemStack(amount,legacyData);
+            return toLegacyItemStack(amount, legacyDataShort);
         return new ItemStack(material,amount);
     }
-    private ItemStack toLegacyItemStack(int amount, byte data) {
+    private ItemStack toLegacyItemStack(int amount, short data) {
         try {
-            return getItemStackMethod(Material.class, int.class, byte.class).newInstance(material, amount, data);
+            System.out.println(material);
+            return getItemStackMethod(Material.class, int.class, short.class).newInstance(material, amount, data);
         } catch (InstantiationException e) {
             throw new RuntimeException(e);
         } catch (IllegalAccessException e) {
@@ -91,6 +102,8 @@ public abstract class AbstractUItemData {
             this.data = data;
         }
     }
+
+
 
     public interface ItemDataToMat {
         Material toMaterial(AbstractUItemData itemData);

@@ -1,28 +1,29 @@
 package be.alexandre01.universal.material;
 
-import be.alexandre01.universal.material.modern.ModernMaterial;
+import com.google.common.collect.BiMap;
 import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class UMaterial  {
-
-    public static final ModernMaterial modern = new ModernMaterial();
+    private static final Map<Material,String> MATERIAL_BY_NAME_REVERSE_MAP_FIELD = createMapMatByNameReverse();
+    private static final Map<String,Material> MATERIAL_NMS_MAP = createMapMatNMS();
+    //public static final ModernMaterial modern = new ModernMaterial();
 
     public static final UItemData AIR = new UItemData("air", "air");
-    public static final UItemData GRASS_BLOCK = new UItemData("grass_block", "grass_block");
+    public static final UItemData GRASS_BLOCK = new UItemData("grass", "grass_block");
     public static final UItemData DIRT = new UItemData("dirt", "dirt");
     public static final UItemData COARSE_DIRT = new UItemData(new UItemData.LegacyCompactedData("dirt", (byte) 1), "coarse_dirt");
     public static final UItemData PODZOL = new UItemData(new UItemData.LegacyCompactedData("dirt", (byte) 2), "podzol");
     public static final UItemData COBBLESTONE = new UItemData("cobblestone", "cobblestone");
     public static final UItemData BEDROCK = new UItemData("bedrock", "bedrock");
-    public static final UItemData WATER = new UItemData("water", "water");
-    public static final UItemData LAVA = new UItemData("lava", "lava");
+    public static final UItemData WATER_BLOCK = new UItemData("water", "water");
+    public static final UItemData LAVA_BLOCK = new UItemData("lava", "lava");
     public static final UItemData GRAVEL = new UItemData("gravel", "gravel");
     public static final UItemData GOLD_ORE = new UItemData("gold_ore", "gold_ore");
     public static final UItemData IRON_ORE = new UItemData("iron_ore", "iron_ore");
@@ -53,7 +54,9 @@ public class UMaterial  {
     public static final UItemData STICKY_PISTON = new UItemData("sticky_piston", "sticky_piston");
     public static final UItemData CAKE = new UItemData("cake", "cake");
     public static final UItemData SPRUCE_DOOR = new UItemData("spruce_door", "spruce_door");
-    public static final UItemData PUMPKIN = new UItemData("pumpkin", "pumpkin");
+
+    public static final UItemData CARVED_PUMPKIN = new UItemData("pumpkin", "carved_pumpkin");
+    public static final UItemData JACK_O_LANTERN = new UItemData("lit_pumpkin", "jack_o_lantern");
     public static final UItemData COBBLESTONE_WALL = new UItemData("cobblestone_wall", "cobblestone_wall");
     public static final UItemData WHEAT = new UItemData("wheat", "wheat");
     public static final UItemData RED_MUSHROOM = new UItemData("red_mushroom", "red_mushroom");
@@ -75,7 +78,8 @@ public class UMaterial  {
     public static final UItemData DARK_OAK_FENCE_GATE = new UItemData("dark_oak_fence_gate", "dark_oak_fence_gate");
     public static final UItemData ACACIA_FENCE_GATE = new UItemData("acacia_fence_gate","acacia_fence_gate");
     public static final UItemData BRICK_STAIRS = new UItemData("brick_stairs", "brick_stairs");
-    public static final UItemData END_PORTAL = new UItemData("end_portal", "end_portal");
+    // TO PATCh
+    public static final UItemData END_PORTAL_BLOCK = new UItemData("end_portal", "end_portal");
     public static final UItemData HEAVY_WEIGHTED_PRESSURE_PLATE = new UItemData("heavy_weighted_pressure_plate", "heavy_weighted_pressure_plate");
     public static final UItemData BIRCH_FENCE_GATE = new UItemData("birch_fence_gate", "birch_fence_gate");
     public static final UItemData NETHER_WART = new UItemData("nether_wart", "nether_wart");
@@ -92,7 +96,7 @@ public class UMaterial  {
     public static final UItemData REDSTONE_WIRE = new UItemData("redstone_wire", "redstone_wire");
     public static final UItemData NETHER_BRICK_STAIRS = new UItemData("nether_brick_stairs", "nether_brick_stairs");
     public static final UItemData GLOWSTONE = new UItemData("glowstone", "glowstone");
-    public static final UItemData CARROTS = new UItemData("carrots", "carrots");
+
     public static final UItemData GLASS_PANE = new UItemData("glass_pane", "glass_pane");
     public static final UItemData TRIPWIRE = new UItemData("tripwire", "tripwire");
     public static final UItemData DIAMOND_ORE = new UItemData("diamond_ore", "diamond_ore");
@@ -101,7 +105,6 @@ public class UMaterial  {
     public static final UItemData IRON_BARS = new UItemData("iron_bars", "iron_bars");
     public static final UItemData DRAGON_EGG = new UItemData("dragon_egg", "dragon_egg");
     public static final UItemData ANVIL = new UItemData("anvil", "anvil");
-    public static final UItemData PISTON_HEAD = new UItemData("piston_head", "piston_head");
     public static final UItemData TORCH = new UItemData("torch", "torch");
     public static final UItemData ENDER_CHEST = new UItemData("ender_chest", "ender_chest");
     public static final UItemData TNT = new UItemData("tnt", "tnt");
@@ -121,7 +124,6 @@ public class UMaterial  {
     public static final UItemData SOUL_SAND = new UItemData("soul_sand", "soul_sand");
     public static final UItemData PUMPKIN_STEM = new UItemData("pumpkin_stem", "pumpkin_stem");
     public static final UItemData BARRIER = new UItemData("barrier", "barrier");
-    public static final UItemData POTATOES = new UItemData("potatoes", "potatoes");
     public static final UItemData HOPPER = new UItemData("hopper", "hopper");
     public static final UItemData FARMLAND = new UItemData("farmland", "farmland");
     public static final UItemData LIGHT_WEIGHTED_PRESSURE_PLATE = new UItemData("light_weighted_pressure_plate", "light_weighted_pressure_plate");
@@ -397,7 +399,7 @@ public class UMaterial  {
     public static final UItemData BLACK_BANNER = new UItemData(new UItemData.LegacyCompactedData("banner", (byte) 15), "black_banner");
 
     // beds
-    public static final UItemData LEGACY_BED = new UItemData(new UItemData.LegacyCompactedData("bed", (byte) 0), "bed");
+    public static final UItemData LEGACY_BED = new UItemData(new UItemData.LegacyCompactedData("bed", (byte) 0), "red_bed");
 
     // slime
     public static final UItemData SLIME_BLOCK = new UItemData(new UItemData.LegacyCompactedData("slime", (byte) 0), "slime_block");
@@ -625,59 +627,146 @@ public class UMaterial  {
     public static final UItemData HEAD = new UItemData(new UItemData.LegacyCompactedData("skull", (byte) 3), "head");
     public static final UItemData CREEPER_HEAD = new UItemData(new UItemData.LegacyCompactedData("skull", (byte) 4), "creeper_head");
 
-    private static final Map<Material,String>  MATERIAL_BY_NAME_REVERSE_MAP_FIELD;
-
-    static {
+    private static Map<Material, String> createMapMatByNameReverse() {
+        System.out.println("Creating material reverse map");
+        System.out.println("Material size: " + Material.values().length);
         try {
-            Field field = Material.class.getDeclaredField("BY_NAME");
-            field.setAccessible(true);
-            Map<String, Material> byName = (Map<String, Material>) field.get(null);
+            Field byNameField = Material.class.getDeclaredField("BY_NAME");
+            byNameField.setAccessible(true);
+            Class<?> itemClazz = NMSVersionUtil.getNMSClass("Item","world.item.Item");
+            // Item.REGISRY
 
+
+            // RegistryMaterials<MinecraftKey, Item>.b() = Map<MinecraftKey, Item>
+
+            Field registryField;
+            Map<Object, Object> map;
+            if(NMSVersionUtil.isLegacy()){
+                registryField = itemClazz.getDeclaredField("REGISTRY");
+                registryField.setAccessible(true);
+                Object registry = registryField.get(null);
+
+                // Map<MinecraftKey, Item>
+                // get all Item from map
+                Field mapField = registry.getClass().getDeclaredField("b");
+                mapField.setAccessible(true);
+
+                map = (Map<Object, Object>) mapField.get(registry);
+            }else{
+                map = new HashMap<>();
+                if(NMSVersionUtil.getType().isBefore(NMSVersionUtil.ReflectionType.V1_19)){
+                    Class<?> registryMaterials = NMSVersionUtil.getNMSClass("RegistryMaterials","core.RegistryMaterials");
+                    Class<?> iRegistry = NMSVersionUtil.getNMSClass("IRegistry","core.IRegistry");
+                    registryField = iRegistry.getDeclaredField("ITEM");
+                    registryField.setAccessible(true);
+
+                    Field biMapField = registryMaterials.getDeclaredField("c");
+                    biMapField.setAccessible(true);
+
+                    BiMap<Object, Object> biMap = (BiMap<Object, Object>) biMapField.get(registryField.get(null));
+                    map = new HashMap<>();
+                    for (Map.Entry<Object, Object> entry : biMap.entrySet()) {
+                        System.out.println(entry.getKey() + " " + entry.getValue());
+                        map.put(entry.getValue(), entry.getKey());
+                    }
+                }
+            }
+
+            Map<String, Material> byName = (Map<String, Material>) byNameField.get(null);
             Map<Material,String> byNameReverse = new HashMap<>();
+
             for (Map.Entry<String, Material> entry : byName.entrySet()) {
                 byNameReverse.put(entry.getValue(), entry.getKey());
             }
-            MATERIAL_BY_NAME_REVERSE_MAP_FIELD = Collections.unmodifiableMap(byNameReverse);
+
+            System.out.println("Checking map size: " + map.size());
+            for (Map.Entry<Object, Object> entry : map.entrySet()) {
+                UMinecraftKey key = UMinecraftKey.of(entry.getValue().toString());
+                Object item = entry.getKey();
+
+                System.out.println(item);
+
+                Method craftItemMethod =  NMSVersionUtil.getBukkitClass("inventory.CraftItemStack").getDeclaredMethod("asNewCraftStack", itemClazz);
+                craftItemMethod.setAccessible(true);
+
+                try {
+                    ItemStack itemStack = (ItemStack) craftItemMethod.invoke(null, item);
+                    System.out.println("CHECKING: " + key.getKey() + " " + itemStack.getType());
+                    if(!byNameReverse.containsValue(key.getKey())){
+                        byNameReverse.put(itemStack.getType(), key.getKey());
+                        System.out.println("YEY !");
+                    }
+
+                } catch (InvocationTargetException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            return Collections.unmodifiableMap(byNameReverse);
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
-        } catch (NoSuchFieldException e) {
+        } catch (NoSuchFieldException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
             throw new RuntimeException(e);
         }
     }
 
+    private static Map<String, Material> createMapMatNMS(){
 
-
-
-
-
-
-    public static Material matchMaterial(String name, int legacyId) {
-        if (NMSVersionUtil.isLegacy()) {
-            try {
-                Method method = Material.class.getMethod("getMaterial", int.class);
-                return (Material) method.invoke(null, legacyId);
-            } catch (NoSuchMethodException e) {
-                throw new RuntimeException(e);
-            } catch (InvocationTargetException e) {
-                throw new RuntimeException(e);
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            }
+        Map<String, Material> map = new HashMap<>();
+        System.out.println("Creating material nms map");
+        System.out.println("Material size: " + Material.values().length);
+        for (Map.Entry<Material, String> entry : MATERIAL_BY_NAME_REVERSE_MAP_FIELD.entrySet()) {
+            map.put(entry.getValue(), entry.getKey());
         }
-        return Material.getMaterial(name);
+        return Collections.unmodifiableMap(map);
     }
+
+
 
     public static Material matchMaterial(String name, String legacyName) {
         if (NMSVersionUtil.isLegacy()) {
-            return Material.matchMaterial(legacyName);
+            Material material = Material.matchMaterial(legacyName);
+            if (material == null) {
+                return backupMaterial(legacyName);
+            }
+            return material;
         }
-        return Material.matchMaterial(name);
+        if(NMSVersionUtil.getType().isAfter(NMSVersionUtil.ReflectionType.V1_12)){
+            try {
+                Method match = Material.class.getDeclaredMethod("matchMaterial", String.class, boolean.class);
+                match.setAccessible(true);
+                return (Material) match.invoke(null, name, false);
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        Material material = Material.matchMaterial(name);
+        if (material == null) {
+            return backupMaterial(name);
+        }
+        return material;
     }
     public static Material getMaterial(String name, String legacyName) {
         if (NMSVersionUtil.isLegacy()) {
             return Material.getMaterial(legacyName);
         }
+        if(NMSVersionUtil.getType().isAfter(NMSVersionUtil.ReflectionType.V1_12)){
+            try {
+                Method match = Material.class.getDeclaredMethod("getMaterial", String.class, boolean.class);
+                match.setAccessible(true);
+                return (Material) match.invoke(null, name, true);
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
+        }
         return Material.getMaterial(name);
+    }
+
+    private static Material backupMaterial(String name) {
+        System.out.println("Material not found: " + name + " using " + MATERIAL_NMS_MAP.get(name) + " as backup");
+        return MATERIAL_NMS_MAP.get(name);
     }
 
     public static AbstractUItemData fromMaterial(Material material) {
