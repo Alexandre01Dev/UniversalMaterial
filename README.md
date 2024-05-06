@@ -19,7 +19,19 @@ To use this library, you need to add it as a dependency in your maven or gradle 
     <groupId>com.github.Alexandre01Dev</groupId>
     <artifactId>UniversalMaterial</artifactId>
     <version>0.0.1-alpha</version>
+    <scope>compile</scope>
 </dependency>
+```
+
+### Gradle
+```gradle
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'com.github.Alexandre01Dev:UniversalMaterial:0.0.1-alpha'
+}
 ```
 
 
