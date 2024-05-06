@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UMaterial  {
+
     public static final ModernMaterial modern = new ModernMaterial();
 
     public static final UItemData AIR = new UItemData("air", "air");
