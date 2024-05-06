@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>be.alexandre01.universal.material</groupId>
-    <artifactId>UniversalMaterial</artifactId>
+    <artifactId>universalmaterial</artifactId>
     <version>1.0-SNAPSHOT</version>
     <distributionManagement>
       <repository>
