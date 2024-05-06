@@ -1,4 +1,4 @@
-## UniversalMaterial (0.0.1-alpha) [![](https://jitpack.io/v/Alexandre01Dev/UniversalMaterial.svg)](https://jitpack.io/#Alexandre01Dev/UniversalMaterial) [![](https://jitpack.io/v/Alexandre01Dev/UniversalMaterial/month.svg)](https://jitpack.io/#USER/REPO)
+## UniversalMaterial (0.1.0-alpha) [![](https://jitpack.io/v/Alexandre01Dev/UniversalMaterial.svg)](https://jitpack.io/#Alexandre01Dev/UniversalMaterial) [![](https://jitpack.io/v/Alexandre01Dev/UniversalMaterial/month.svg)](https://jitpack.io/#USER/REPO)
 
 
 UniversalMaterial is a library that provide classes to work with Bukkit Materials and Minecraft versions. It's a simple library that can be used to make your plugin compatible with multiple versions of Minecraft.
