@@ -36,14 +36,14 @@ public class NMSVersionUtil {
         //return "net.minecraft.server";
     }
     public static String getNMSPath(String path) {
-        if(getType() == ReflectionType.V1_19 || getType() == ReflectionType.V1_20){
+        if(getType().isAfter(ReflectionType.V1_16)){
             return "net.minecraft." + path;
         }
         return getNMSPath() + "." + path;
     }
-    public static String getNMSPath(String path,String after1_19) {
-        if(getType() == ReflectionType.V1_19 || getType() == ReflectionType.V1_20){
-            return "net.minecraft." + after1_19;
+    public static String getNMSPath(String path,String from1_17) {
+        if(getType().isAfter(ReflectionType.V1_16)){
+            return "net.minecraft." + from1_17;
         }
         return getNMSPath() + "." + path;
     }
@@ -65,8 +65,8 @@ public class NMSVersionUtil {
         return Class.forName(getNMSPath(path));
     }
 
-    public static Class<?> getNMSClass(String path, String after1_19) throws ClassNotFoundException {
-        return Class.forName(getNMSPath(path, after1_19));
+    public static Class<?> getNMSClass(String path, String from1_17) throws ClassNotFoundException {
+        return Class.forName(getNMSPath(path, from1_17));
     }
 
     public enum ReflectionType {

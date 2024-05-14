@@ -37,9 +37,9 @@ public class UMaterial  {
     public static final UItemData LAPIS_BLOCK = new UItemData("lapis_block", "lapis_block");
     public static final UItemData DISPENSER = new UItemData("dispenser", "dispenser");
     public static final UItemData SANDSTONE_SLAB = new UItemData(new UItemData.LegacyCompactedData("stone_slab", (byte) 1), "sandstone_slab");
-    public static final UItemData SMOOTH_SANDSTONE_SLAB = new UItemData(new UItemData.LegacyCompactedData("stone_slab", (byte) 9), "smooth_sandstone_slab");
-    public static final UItemData RED_SANDSTONE_SLAB = new UItemData(new UItemData.LegacyCompactedData("stone_slab", (byte) 2), "red_sandstone_slab");
-    public static final UItemData SMOOTH_RED_SANDSTONE_SLAB = new UItemData(new UItemData.LegacyCompactedData("stone_slab", (byte) 10), "smooth_red_sandstone_slab");
+   // public static final UItemData SMOOTH_SANDSTONE_SLAB = new UItemData(new UItemData.LegacyCompactedData("stone_slab", (byte) 9), "smooth_sandstone_slab");
+    //public static final UItemData RED_SANDSTONE_SLAB = new UItemData(new UItemData.LegacyCompactedData("stone_slab", (byte) 2), "red_sandstone_slab");
+    //public static final UItemData SMOOTH_RED_SANDSTONE_SLAB = new UItemData(new UItemData.LegacyCompactedData("stone_slab", (byte) 10), "smooth_red_sandstone_slab");
     // public static final UItemData PETRIFIED_OAK_SLAB = new UItemData(new UItemData.LegacyCompactedData("stone_slab",(byte) 3),"petrified_oak_slab");
     public static final UItemData BROWN_MUSHROOM = new UItemData("brown_mushroom", "brown_mushroom");
     public static final UItemData SANDSTONE_STAIRS = new UItemData("sandstone_stairs", "sandstone_stairs");
@@ -112,6 +112,8 @@ public class UMaterial  {
     public static final UItemData ENCHANTING_TABLE = new UItemData("enchanting_table", "enchanting_table");
     public static final UItemData LEVER = new UItemData("lever", "lever");
     public static final UItemData STONE_PRESSURE_PLATE = new UItemData("stone_pressure_plate", "stone_pressure_plate");
+
+    public static final UItemData WOODEN_PRESSURE_PLATE = new UItemData("wooden_pressure_plate", "oak_pressure_plate");
     public static final UItemData CHEST = new UItemData("chest", "chest");
     public static final UItemData SPRUCE_FENCE = new UItemData("spruce_fence", "spruce_fence");
     public static final UItemData BIRCH_FENCE = new UItemData("birch_fence", "birch_fence");
@@ -145,7 +147,6 @@ public class UMaterial  {
     public static final UItemData RAIL = new UItemData("rail", "rail");
     public static final UItemData JUNGLE_STAIRS = new UItemData("jungle_stairs", "jungle_stairs");
     public static final UItemData OBSIDIAN = new UItemData("obsidian", "obsidian");
-    public static final UItemData WALL_SIGN = new UItemData("wall_sign", "wall_sign");
     public static final UItemData JUNGLE_DOOR = new UItemData("jungle_door", "jungle_door");
     public static final UItemData STONE_BUTTON = new UItemData("stone_button", "stone_button");
     public static final UItemData PISTON = new UItemData("piston", "piston");
@@ -262,7 +263,7 @@ public class UMaterial  {
 
     // tall grass
 
-    public static final USpecificItemData SHRUB = new USpecificItemData(new UItemData.LegacyCompactedData("tallgrass", (byte) 0), "shrub");
+    public static final USpecificItemData SHRUB = new USpecificItemData(new UItemData.LegacyCompactedData("tallgrass", (byte) 0), "dead_bush");
     public static final USpecificItemData TALL_GRASS = new USpecificItemData(new UItemData.LegacyCompactedData("tallgrass", (byte) 1), "tall_grass");
     public static final USpecificItemData FERN = new USpecificItemData(new UItemData.LegacyCompactedData("tallgrass", (byte) 2), "fern");
 
@@ -603,8 +604,8 @@ public class UMaterial  {
 
     // dyes
     public static final UItemData INK_SAC = new UItemData(new UItemData.LegacyCompactedData("dye", (byte) 0), "ink_sac");
-    public static final UItemData ROSE_RED = new UItemData(new UItemData.LegacyCompactedData("dye", (byte) 1), "rose_red");
-    public static final UItemData CACTUS_GREEN = new UItemData(new UItemData.LegacyCompactedData("dye", (byte) 2), "cactus_green");
+    public static final UItemData ROSE_DYE = new UItemData(new UItemData.LegacyCompactedData("dye", (byte) 1), "red_dye");
+    public static final UItemData GREEN_DYE = new UItemData(new UItemData.LegacyCompactedData("dye", (byte) 2), "green_dye");
     public static final UItemData COCOA_BEANS = new UItemData(new UItemData.LegacyCompactedData("dye", (byte) 3), "cocoa_beans");
     public static final UItemData LAPIS_LAZULI = new UItemData(new UItemData.LegacyCompactedData("dye", (byte) 4), "lapis_lazuli");
     public static final UItemData PURPLE_DYE = new UItemData(new UItemData.LegacyCompactedData("dye", (byte) 5), "purple_dye");
@@ -613,7 +614,7 @@ public class UMaterial  {
     public static final UItemData GRAY_DYE = new UItemData(new UItemData.LegacyCompactedData("dye", (byte) 8), "gray_dye");
     public static final UItemData PINK_DYE = new UItemData(new UItemData.LegacyCompactedData("dye", (byte) 9), "pink_dye");
     public static final UItemData LIME_DYE = new UItemData(new UItemData.LegacyCompactedData("dye", (byte) 10), "lime_dye");
-    public static final UItemData DANDELION_YELLOW = new UItemData(new UItemData.LegacyCompactedData("dye", (byte) 11), "dandelion_yellow");
+    public static final UItemData YELLOW_DYE = new UItemData(new UItemData.LegacyCompactedData("dye", (byte) 11), "yellow_dye");
     public static final UItemData LIGHT_BLUE_DYE = new UItemData(new UItemData.LegacyCompactedData("dye", (byte) 12), "light_blue_dye");
     public static final UItemData MAGENTA_DYE = new UItemData(new UItemData.LegacyCompactedData("dye", (byte) 13), "magenta_dye");
     public static final UItemData ORANGE_DYE = new UItemData(new UItemData.LegacyCompactedData("dye", (byte) 14), "orange_dye");
@@ -624,7 +625,7 @@ public class UMaterial  {
     public static final UItemData SKELETON_SKULL = new UItemData(new UItemData.LegacyCompactedData("skull", (byte) 0), "skeleton_skull");
     public static final UItemData WITHER_SKELETON_SKULL = new UItemData(new UItemData.LegacyCompactedData("skull", (byte) 1), "wither_skeleton_skull");
     public static final UItemData ZOMBIE_HEAD = new UItemData(new UItemData.LegacyCompactedData("skull", (byte) 2), "zombie_head");
-    public static final UItemData HEAD = new UItemData(new UItemData.LegacyCompactedData("skull", (byte) 3), "head");
+    public static final UItemData PLAYER_HEAD = new UItemData(new UItemData.LegacyCompactedData("skull", (byte) 3), "player_head");
     public static final UItemData CREEPER_HEAD = new UItemData(new UItemData.LegacyCompactedData("skull", (byte) 4), "creeper_head");
 
     private static Map<Material, String> createMapMatByNameReverse() {
@@ -638,7 +639,6 @@ public class UMaterial  {
 
 
             // RegistryMaterials<MinecraftKey, Item>.b() = Map<MinecraftKey, Item>
-
             Field registryField;
             Map<Object, Object> map;
             if(NMSVersionUtil.isLegacy()){
@@ -654,7 +654,7 @@ public class UMaterial  {
                 map = (Map<Object, Object>) mapField.get(registry);
             }else{
                 map = new HashMap<>();
-                if(NMSVersionUtil.getType().isBefore(NMSVersionUtil.ReflectionType.V1_19)){
+                if(NMSVersionUtil.getType().isBefore(NMSVersionUtil.ReflectionType.V1_17)){
                     Class<?> registryMaterials = NMSVersionUtil.getNMSClass("RegistryMaterials","core.RegistryMaterials");
                     Class<?> iRegistry = NMSVersionUtil.getNMSClass("IRegistry","core.IRegistry");
                     registryField = iRegistry.getDeclaredField("ITEM");
@@ -664,7 +664,6 @@ public class UMaterial  {
                     biMapField.setAccessible(true);
 
                     BiMap<Object, Object> biMap = (BiMap<Object, Object>) biMapField.get(registryField.get(null));
-                    map = new HashMap<>();
                     for (Map.Entry<Object, Object> entry : biMap.entrySet()) {
                         System.out.println(entry.getKey() + " " + entry.getValue());
                         map.put(entry.getValue(), entry.getKey());
